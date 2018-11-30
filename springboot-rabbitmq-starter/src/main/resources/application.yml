@@ -1,0 +1,44 @@
+spring.application.name: @project.artifactId@
+
+http.encoding: #表示用于解码URI的字符编码。
+  charset: UTF-8
+  enable: true
+  force: true
+
+server:
+  port: 8900
+
+spring:
+  # 连接池
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_starter?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  # 消息队列
+  rabbitmq:
+    addresses: 192.168.1.160
+    port: 5672
+    username: joker
+    password: joker
+    virtual-host: /
+  # ApplicationListener 应用监听配置
+  profiles:
+    active: fanout #测试交换器类型：direct（默认）、fanout、topic
+
+mybatis:
+  mapper-locations: classpath*:mybatis/*Mapper.xml #mybatis xml配置文件对应地址 resources->mybatis
+  type-aliases-package: com.example.*
+  reloadMapper.enabled: true
+  dbColumnUnderline: true
+
+rabbitmq:
+  queue:
+    name: spring-boot-queue
+    descript: 队列
+  exchange:
+    name: spring-boot-exchange
+    descript: 交换机
+  routing:
+    key: spring-boot-key
+    descript: 路由键

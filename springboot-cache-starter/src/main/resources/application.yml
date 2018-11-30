@@ -1,0 +1,38 @@
+spring.application.name: @project.artifactId@
+
+logging:
+  level:
+#    root: info
+    com.joker.cache: debug
+
+#debug: true #打开springboot自动配置信息
+
+http.encoding: #表示用于解码URI的字符编码。
+  charset: UTF-8
+  enable: true
+  force: true
+
+server:
+  port: 8901
+
+spring:
+  # 连接池
+  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver #配置可以不写，会根据url中的jdbc:mysql前缀自动判断
+    url: jdbc:mysql://localhost:3306/springboot_starter?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource #springboot 默认的数据库连接池为HikariDataSource
+  # redis
+  redis:
+    host: 192.168.1.160
+    port: 6379
+
+mybatis:
+  mapper-locations: classpath*:mybatis/*Mapper.xml #mybatis xml配置文件对应地址 resources->mybatis
+  type-aliases-package: com.joker.cache.mapper
+  reloadMapper.enabled: true
+  dbColumnUnderline: true
+  configuration:
+    map-underscore-to-camel-case: true
+
