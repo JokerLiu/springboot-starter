@@ -14,16 +14,18 @@ import org.springframework.data.redis.serializer.*;
 import java.time.Duration;
 
 /**
+ * 缓存配置类
  * @Author: Joker
  * @Description:
  * @Date: Created in 2018/11/30 21:48
  */
 @Slf4j
 @Configuration
-@EnableCaching//启用缓存的意思
+@EnableCaching //启用缓存
 public class CacheConfig extends CachingConfigurerSupport {
 
 
+    /* Redis配置 */
     @Configuration
     static class MyRedisTemplateConfig {
 
@@ -54,7 +56,7 @@ public class CacheConfig extends CachingConfigurerSupport {
                     .transactionAware()
                     .build();
 
-            log.debug("自定义RedisCacheManager加载完成");
+            log.debug("【CacheConfig】自定义RedisCacheManager加载完成 >=================================");
             return redisCacheManager;
         }
 
