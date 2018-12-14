@@ -1,0 +1,27 @@
+spring.application.name: @project.artifactId@
+
+
+server:
+  port: 8903
+
+spring:
+  # 连接池
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_starter?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  # 消息队列
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test
+      enable-auto-commit: true
+#      auto-commit-interval: java.time.Duration
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
